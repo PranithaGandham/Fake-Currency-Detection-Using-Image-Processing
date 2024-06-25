@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+    <title>Fake Currency Detection</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="bgcontainer" id="home">
+      <div class="navbar">
+        <img src="\static\fcd.png" alt="Logo" />
+         <a href="#contact">Contact</a>
+        <a href="#news">News</a>
+        <a href="#guide">Guide</a>
+        <a href="#detector">Detector</a>
+        <a href="#learn">Learn</a>
+        <a href="#home">Home</a>
+      </div>
+
+      <img class="slight-move note" src="\static\asset 2.png" />
+      <img
+        src="\static\indian-digital-currency-e-rupee-golden-coin-design-vector_1017-45648-removebg-preview.png"
+        alt="Sample Image"
+        class="circular-image"
+      />
+
+      <img src="\static\asset 7.png" alt="Sample Image" class="zoom-image" />
+
+      <div class="main">
+        <div class="heading">
+          Fake Currency<br />Detection
+          <div class="main">
+            <p class="info">
+              At CounterfeitGuard, we specialize in providing cutting-edge tools
+              and resources to help individuals and businesses detect
+              counterfeit currency with ease and confidence.
+            </p>
+
+            
+          </div>
+          <a href="#detector" class="btn-m6">Detector</a>
+        </div>
+        <img class="hero slight-move" src="\static\hero-4.png" />
+      </div>
+      <div id="learn"></div>
+      
+      
+      <img src="\static\asset 3.png" alt="Sample Image" class="circular-image two"/>
+    </div>
+    <div class="learn-more">
+      <h3 class="learn text-center" >Learn More</h3>
+      <div class="card-wrapper">
+        <div class="card-container">
+          <div class="card">
+            <div class="front-content">
+              <p>Manual Check</p>
+            </div>
+            <div class="content">
+              <p class="heading" >How do we check manually?</p>
+              <p>
+                Manually check Indian currency by examining the watermark,
+                security thread, latent image, micro-lettering, and
+                color-shifting ink on the note.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card-container">
+          <div class="card">
+            <div class="front-content">
+              <p>Correlevance</p>
+            </div>
+            <div class="content">
+              <p class="heading">What is Correlevance ?</p>
+              <p>
+                Correlevance is using correlated features or patterns within the
+                data to enhance the accuracy of distinguishing between genuine
+                and counterfeit notes.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card-container">
+          <div class="card">
+            <div class="front-content">
+              <p>Components</p>
+            </div>
+            <div class="content">
+              <p class="heading">Components to identify</p>
+              <p >
+                The components to identify if a note is real include watermark,
+                security thread, latent image, micro-lettering, color-shifting
+                ink, and raised printing.
+              </p>
+            </div>
+          </div>
+        </div>
+        <img src="\static\robo-removebg-preview.png" class="robo">
+      </div>
+      <div id="detector"></div>
+    </div>
+    <div class="detector-body">
+    <div class="detector" >
+      <h3 class="learn text-center det">Detector</h3>
+      <div class="gradient-div">
+        <div class="upload-form-container">
+          <form
+            class="upload-form"
+            action="/"
+            method="post"
+            enctype="multipart/form-data"
+            id="myForm"
+          >
+            <div class="icon-container">
+              <i class="fa-regular fa-image"></i>
+            </div>
+            <div>
+              <label for="imagefile" id="imageLabel">Select Image</label>
+              <input type="file" id="imagefile" name="imagefile" aria-label="Choose Image" accept="image/*">
+          </div>
+            <!-- <div class="mt-3">
+              <div class="custom-select-wrapper">
+                <select
+                  class="custom-select form-control"
+                  name="denomination"
+                  aria-label="Select Denomination "
+                >
+                  <option value="" disabled selected>
+                    Select Denomination
+                  </option>
+                  <option value="500">500</option>
+                  <option value="200">200</option>
+                  <option value="100">100</option>
+                </select>
+              </div>
+            </div> -->
+            <button class="btn btn-primary mt-3 open-modal" type="submit">
+              Predict Image
+            </button>
+          </form>
+        </div>
+        <!-- <div class="result">{% if prediction %}
+          <p class="prediction">{{prediction}}</p>
+          {% endif %}</div>
+      </div> -->
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p class="prediction">Your prediction will appear here.</p>
+        </div>
+      </div>
+      <div id="guide"></div>
+    </div>
+    
+    </div>
+    <div class="guide" >
+      <div class="projcard-container">
+    
+  <div class="projcard projcard-blue">
+    <div class="projcard-innerbox">
+      <img class="projcard-img" src="\static\CashReader_EN_USD_10-1.jpg" />
+      <div class="projcard-textbox">
+        <div class="projcard-title">Guidelines</div>
+        <div class="projcard-subtitle">This explains the detector in more detail</div>
+        <div class="projcard-bar"></div>
+        <div class="projcard-description"><b>Access the Website: </b>Navigate to the website hosting the Fake Currency Detector.<br>
+<b>Upload Currency Image:</b> Upload a clear image of the banknote you wish to verify. Ensure that the image is well-lit and captures all relevant security features.<br>
+<b>Initiate Analysis:</b>Initiate Click on the "Detect" or "Verify" button to initiate the analysis process.<br>
+<b>Review Results:</b> After a few moments, the website will display the results of the analysis. It will indicate whether the currency appears to be genuine or suspicious.
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+    </div>
+
+    <img src="\static\asset 28.jpeg" class="bluebg" id="news">
+    <h3 class="learn">News</h3>
+    <div class="News">
+      <div class="cardtwo">
+        <div class="image" style="background-image: url('/static/1..jpg')"></div>
+        <div class="content">
+          <a href="https://cnpnashik.spmcil.com/en/about-us/">
+            <span class="title"> Currency Note Press, Nashik </span>
+          </a>
+
+          <p class="desc">
+            Currency Note Press, Nashik (‘CNP Nashik’) prints high quality
+            banknotes for the Government of India. While initially established
+            in 1928, the production facility became a unit of Security Printing
+            and Minting Corporation of India Limited (SPMCIL) during
+            corporatization in 2006. Located at Nashik road, the campus is
+            spread over in an area of 14 acres, and is equipped with state of
+            the art IP surveillance System.
+          </p>
+
+          <a class="action" href="https://cnpnashik.spmcil.com/en/about-us/">
+            Find out more
+            <span aria-hidden="true"> → </span>
+          </a>
+        </div>
+      </div>
+      <div class="cardtwo">
+        <div class="image" style="background-image: url('/static/2.jpg')"></div>
+        <div class="content">
+          <a
+            href="https://alpvision.com/counterfeit-detection-devices-a-panorama/"
+          >
+            <span class="title">
+              COUNTERFEIT DETECTION DEVICES: A PANORAMA
+            </span>
+          </a>
+
+          <p class="desc">
+            Counterfeit detection is a sector that many industries are strongly
+            dependent upon. The sector is subject to rapid changes, due to the
+            constant co-evolution between detection mechanisms and
+            counterfeiters seeking to circumvent them. Therefore, technologies
+            may become obsolete or deprecated in an unexpectedly short period of
+            time as exploits are uncovered.
+          </p>
+
+          <a
+            class="action"
+            href="https://alpvision.com/counterfeit-detection-devices-a-panorama/"
+          >
+            Find out more
+            <span aria-hidden="true"> → </span>
+          </a>
+        </div>
+      </div>
+      <div class="cardtwo">
+        <div class="image" style="background-image: url('/static/3.jpeg')"></div>
+        <div class="content">
+          <a
+            href="https://www.hindustantimes.com/cities/noida-news/fake-currency-reaches-noida-bank-rbi-files-complaint-101714760129894.html"
+          >
+            <span class="title"> Fake currency reaches Noida bank </span>
+          </a>
+
+          <p class="desc">
+            Fake currency reaches Noida bank.The Noida Police has registered an FIR against unidentified suspects
+            for allegedly depositing counterfeit currency notes at a government
+            bank, “RBI officials have found that forged currency notes
+            of ₹2,000 denominations were deposited at the currency chest of an
+            SBI branch in Noida last year. A total of ₹38,000 were found to be
+            forged currency.
+          </p>
+
+          <a
+            class="action"
+            href="https://www.hindustantimes.com/cities/noida-news/fake-currency-reaches-noida-bank-rbi-files-complaint-101714760129894.html"
+          >
+            Find out more
+            <span aria-hidden="true"> → </span>
+          </a>
+        </div>
+      </div>
+      <div class="cardtwo">
+        <div class="image" style="background-image: url('/static/4.webp')"></div>
+        <div class="content">
+          <a
+            href="https://timesofindia.indiatimes.com/city/delhi/delhi-16-banks-complain-about-rs-54-lakh-fake-notes-in-6-months/articleshow/108418910.cms"
+          >
+            <span class="title">
+              Delhi: 16 banks complain about Rs 54 lakh fake notes
+          </a>
+
+          <p class="desc">
+            16 banks complain about Rs 54 lakh fake notes.Delhi Police has received complaints from several banks that they received fake currency Indian notes (FICN) with a face value of over Rs 54 lakh between July and Dec last year.
+According to officials, the Reserve Bank of India and 15 other banks filed the complaints. The highest face value of fake notes — Rs 16.3 lakh.
+          </p>
+
+          <a
+            class="action"
+            href="https://timesofindia.indiatimes.com/city/delhi/delhi-16-banks-complain-about-rs-54-lakh-fake-notes-in-6-months/articleshow/108418910.cms"
+          >
+            Find out more
+            <span aria-hidden="true"> → </span>
+          </a>
+        </div>
+      </div>
+    </div>
+     <footer>
+        <div class="footer-container" id="contact">
+            <div class="contact-info">
+                <p><strong>Contact Number:</strong> +1 234 567 890</p>
+                <p><strong>Email:</strong> contact@example.com</p>
+                <p><strong>Office Address:</strong> 1234 Street Name, City, Country</p>
+            </div>
+        </div>
+      </footer>
+    <script src="/static/scripts.js" charset="utf-8"></script> 
+    
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-pzjw8f+ua7Kw1TIqT/rG6QpG1rL5dNyJQm0Qld/RP6NE6tlp3v3Z7oPoq1Q+EfwE" crossorigin="anonymous"></script>
+  </body>
+</html>
