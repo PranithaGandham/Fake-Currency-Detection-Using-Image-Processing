@@ -1,6 +1,5 @@
 # FAKE-CURRENCY-DETECTION-USING-IMAGE-PROCESSING
-Detect counterfeit currency using image processing. Analyzes features like transparent strips &amp; patterns, comparing real vs. fake notes to determine authenticity.
-Sure, here's a README file for your project:
+Detect counterfeit currency using image processing. Analyzes features like transparent strips, security strips, serial number &amp; gandhiji print, comparing real vs. fake notes to determine authenticity.
 
 ## Overview
 
@@ -8,25 +7,26 @@ This project aims to detect counterfeit currency notes using image processing te
 
 ## Description
 
-The project utilizes computer vision libraries like OpenCV and NumPy to process the images of currency notes. It extracts specific regions of interest, such as the transparent strip and certain patterns, and compares them between real and fake notes. The correlation coefficient is calculated to assess the similarity between corresponding regions.
+The project utilizes computer vision libraries like OpenCV and NumPy to process the images of currency notes. It extracts specific regions of interest, such as the transparent strip and certain patterns, and compares them between real and fake notes. The intensity is calculated to assess the similarity between corresponding regions.
 
 ## Files
 
-- **fakecurrency.ipynb**: Jupyter Notebook containing the Python code for the fake currency detection project.
+- **Deployment Folder**: This folder contains a static folder containing the javascript and css files of the website. App.py that contains the python flask code used to integrate the project and the website. Realfiveh.png,Realh.jpg and Realtwoh.jpg are used as a refence to compare the uploaded images by the user.
 
-- **real.jpg**: Image file containing a sample of a real currency note.
 
-- **fake.jpg**: Image file containing a sample of a fake currency note.
+- **Project.py**: The Python code for the fake currency detection project.
+
+- **denomination.py**: This python file consists a code to extract the denomination of the uploaded code and sets the appropriate image for the co,parision. 
+
+-**app.py**: This flask code integrates the html css java script files with the backend project.py
 
 ## Usage
 
-1. **Run the Notebook**: Open and run the `fakecurrency.ipynb` notebook using Jupyter or any compatible environment.
+1. **Run app.py**: Open and run the `app.py` notebook using IDE or any compatible environment and open the live server.
 
-2. **Load Images**: Ensure that the `real.jpg` and `fake.jpg` images are placed in the same directory as the notebook or provide the correct file paths.
+2. **Load Images**: In the webpage redirect to the detector section and upload the image and submit it.
 
-3. **Execute Code Cells**: Run each code cell in the notebook sequentially to perform image processing and analysis.
-
-4. **Interpret Results**: The notebook will output the analysis results, indicating whether the currency is determined to be legitimate or fake based on the correlation coefficient and other factors.
+3. **Interpret Results**: The interpreted reseult would pop up on the website.
 
 ## Dependencies
 
@@ -34,13 +34,12 @@ The project utilizes computer vision libraries like OpenCV and NumPy to process 
 - OpenCV
 - NumPy
 - Matplotlib
+- Flask
+- Tesseract
+- HTML
+- CSS
+- Java Script
 
 ## Contribution
 
-Contributions to the project are welcome! Feel free to fork the repository, make improvements, and submit pull requests.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
+Contributions to the project are welcome! Feel free to fork the repository, make improvements, and submit pull requests

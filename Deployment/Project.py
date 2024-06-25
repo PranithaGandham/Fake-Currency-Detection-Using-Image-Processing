@@ -38,7 +38,7 @@ def compare_ssim(img1, img2):
 def validate(string, denomination) -> str:
     # Determine the reference image based on the denomination
     if denomination == 500:
-        reference_image_path = 'Realfiveh.png'
+        reference_image_path = 'Deployment\Realfiveh.png'
     elif denomination == 200:
         reference_image_path = 'Deployment\Realtwoh.jpg'
     elif denomination == 100:
