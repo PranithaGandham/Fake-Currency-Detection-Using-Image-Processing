@@ -18,7 +18,7 @@ The project utilizes computer vision libraries like OpenCV and NumPy to process 
 
 - **denomination.py**: This python file consists a code to extract the denomination of the uploaded code and sets the appropriate image for the co,parision. 
 
--**app.py**: This flask code integrates the html css java script files with the backend project.py
+- **app.py**: This flask code integrates the html css java script files with the backend project.py
 
 ## Usage
 

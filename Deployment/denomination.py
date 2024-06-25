@@ -8,6 +8,8 @@ def extract_roi(image):
     x2, y2 = 625, 255
     return image[y1:y2, x1:x2]
 
+#This is a function defined to rescale the images
+
 def rescaleFrame(frame):
     width = int(700)
     height = int(300)
