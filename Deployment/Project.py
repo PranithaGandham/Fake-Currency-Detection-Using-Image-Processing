@@ -1,6 +1,6 @@
 import cv2 as cv
-import matplotlib.pyplot as plt
-import numpy as np
+# import matplotlib.pyplot as plt
+# import numpy as np
 from skimage.metrics import structural_similarity as ssim
 
 def rescaleFrame(frame,width,height):
@@ -115,7 +115,6 @@ def validate(string, denomination) -> str:
         cv.imshow(f'Genuine ROI {i+1}', roi)
     for i, roi in enumerate(test_rois):
         cv.imshow(f'Test ROI {i+1}', roi)
-
 
 
 
