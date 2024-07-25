@@ -36,9 +36,6 @@ def extract(path):
     
     # Preprocess the ROI
     preprocessed_roi = preprocess_image(roi)
-
-    # cv.imshow('Processed ROI', preprocessed_roi)
-    # cv.waitKey(0)
     
     # Convert the ROI to a PIL Image for pytesseract to process
     pil_image = PIL.Image.fromarray(preprocessed_roi)
@@ -48,6 +45,9 @@ def extract(path):
     ans = pytesseract.image_to_string(pil_image, config=myconfig)
 
     print(f"Extracted Text: {ans}")
-    print(type(ans))
-    
+
+    # cv.imshow("Rescaled_Image",rescaled_image)
+    # cv.imshow("roi",roi)
+    # cv.waitKey(0)
+
     return ans
