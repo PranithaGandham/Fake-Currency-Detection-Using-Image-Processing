@@ -3,6 +3,9 @@ import numpy as np
 from skimage.metrics import structural_similarity as ssim
 import glob
 import random
+from audio_output import play_audio, play_audio_a
+import pandas as pd
+import numpy as np
 
 def rescaleFrame(frame, width, height):
     dimensions = (width, height)
@@ -65,29 +68,30 @@ def load_training_data(denomination):
         if image is None:
             continue
         
-        for _ in range(5):  # Apply data augmentation 5 times per image
-            augmented_image = augment_image(image)
-            rescaled_image = rescaleFrame(augmented_image, 700, 300)
-            gray_image = grayScale(rescaled_image)
-            blurred_image = cv.GaussianBlur(gray_image, (5, 5), 0)
-            equalized_image = cv.equalizeHist(blurred_image)
-            edge_detected_image = cv.Canny(equalized_image, 150, 255)
+        # for _ in range(5):  # Apply data augmentation 5 times per image
+        augmented_image = augment_image(image)
+        rescaled_image = rescaleFrame(augmented_image, 700, 300)
+        gray_image = grayScale(rescaled_image)
+        blurred_image = cv.GaussianBlur(gray_image, (5, 5), 0)
+        equalized_image = cv.equalizeHist(blurred_image)
+        edge_detected_image = cv.Canny(equalized_image, 150, 255)
 
-            rois = [
+        rois = [
                 extract_roi(edge_detected_image, [(0, 56), (32, 150)]),
                 extract_roi(edge_detected_image, [(380, 0), (410, 300)]),
                 extract_roi(edge_detected_image, [(445, 240), (630, 300)]),
                 extract_roi(edge_detected_image, [(152, 65), (385, 300)])
             ]
             
-            histograms = compute_histograms(rois)
-            training_histograms.append(histograms)
+        histograms = compute_histograms(rois)
+        training_histograms.append(histograms)
 
-            training_images.append(rois)
+        training_images.append(rois)
 
     return training_images, training_histograms
 
 def validate(string, denomination) -> str:
+    play_audio(denomination)
     check = cv.imread(string)
     if check is None:
         return "Uploaded image not found or could not be read."
@@ -113,6 +117,32 @@ def validate(string, denomination) -> str:
     test_histograms = compute_histograms(test_rois)
 
     training_images, training_histograms = load_training_data(denomination)
+    # df_images_parts = []
+
+    # # Load each part of the images data
+    # for part in range(1, 6):  # Adjust the range if there are more or fewer parts
+    #     sheet_name = f'Images_Part_{part}'
+    #     try:
+    #         df_part = pd.read_excel(f'{denomination}.xlsx', sheet_name=sheet_name)
+    #         df_images_parts.append(df_part)
+    #     except ValueError as e:
+    #         print(f"Error: {e}")
+    #         print(f"Sheet {sheet_name} not found.")
+    #         return None
+
+    # # Concatenate all parts into a single DataFrame
+    # df_images = pd.concat(df_images_parts, axis=1)
+
+    # # Load histograms (assuming 'Histograms' sheet exists and is correct)
+    # df_histograms = pd.read_excel(f'{denomination}.xlsx', sheet_name='Histograms')
+
+    # # Define the ROI dimensions (replace these with the actual values)
+    # roi_height = 100  # Example value
+    # roi_width = 100   # Example value
+
+    # # Convert the DataFrame back to the original format
+    # training_images = [row.values.reshape(-1, roi_height, roi_width) for row in df_images.itertuples(index=False)]
+    # training_histograms = df_histograms.values.tolist()
 
     hist_comparison_results = []
     ssim_comparison_results = []
@@ -122,35 +152,30 @@ def validate(string, denomination) -> str:
         for test_hist, train_hist in zip(test_histograms, training_histogram):
             hist_comparison_result = compare_histograms(test_hist, train_hist, method='kldiv')
             hist_comparison_results.append(hist_comparison_result)
-            # print(f"Test Hist: {test_hist[:5]}, Train Hist: {train_hist[:5]}, Result: {hist_comparison_result}")
+ 
 
     print("SSIM comparison results:")
     for training_rois in training_images:
         for test_roi, train_roi in zip(test_rois, training_rois):
             ssim_comparison_result = compare_ssim(test_roi, train_roi)
             ssim_comparison_results.append(ssim_comparison_result)
-            # print(f"SSIM Test ROI: {test_roi.shape}, Train ROI: {train_roi.shape}, Result: {ssim_comparison_result}")
+
 
     combined_results = []
     print(f"Histogram results length: {len(hist_comparison_results)}, SSIM results length: {len(ssim_comparison_results)}")
     for hist_result, ssim_result in zip(hist_comparison_results, ssim_comparison_results):
-        combined_result = (0.7 * (1 - hist_result)) + (0.3 * ssim_result)
+        combined_result = (0.70 * (1 - hist_result)) + (0.30 * ssim_result)
         combined_results.append(combined_result)
 
-    # print("Combined Comparison Results (Histogram + SSIM):")
-    # for i, result in enumerate(combined_results):
-    #     print(f"ROI {i+1}: {result:.4f}")
-
-    threshold = 0.72
+    threshold = 0.75
     pass_count = 0
     for i, result in enumerate(combined_results):
         if result > threshold:
-            print(f"ROI {i+1} passes with result {result:.4f}")
             pass_count += 1
-        else:
-            print(f"ROI {i+1} fails with result {result:.4f}")
 
-    is_genuine = pass_count >=180
+    is_genuine = pass_count >=30
     print(pass_count)
+   
+    play_audio_a(is_genuine)
 
     return f"{'The note is genuine' if is_genuine else 'It is a fake note'}"

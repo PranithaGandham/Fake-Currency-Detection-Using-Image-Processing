@@ -3,7 +3,7 @@ from PIL import Image
 from Project import validate
 from denomination import extract
 
-app = Flask(__name__,static_folder='static') #static_folder='static'
+app = Flask(__name__,static_folder='static')
 
 @app.route('/', methods=['GET'])
 def hello_world():
@@ -14,7 +14,6 @@ def predict():
     imagefile = request.files['imagefile']
     image_path = "./Deployment/" + imagefile.filename
     imagefile.save(image_path)
-
 
     denomination = int(extract(image_path))
     validation = validate(image_path,denomination)

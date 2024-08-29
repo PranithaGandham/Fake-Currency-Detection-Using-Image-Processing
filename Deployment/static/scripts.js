@@ -67,3 +67,16 @@ window.onclick = function(event) {
 //                 imageLabel.textContent = 'Select Image';
 //             }
 //         });
+document.getElementById('imagefile').addEventListener('change', function(event) {
+  const file = event.target.files[0];
+  if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+          const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+          const imagePreview = document.getElementById('imagePreview');
+          imagePreview.src = e.target.result;
+          imagePreviewContainer.style.display = 'block'; // Show the container
+      }
+      reader.readAsDataURL(file);
+  }
+});

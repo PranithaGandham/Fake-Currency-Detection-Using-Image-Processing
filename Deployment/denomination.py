@@ -46,8 +46,4 @@ def extract(path):
 
     print(f"Extracted Text: {ans}")
 
-    # cv.imshow("Rescaled_Image",rescaled_image)
-    # cv.imshow("roi",roi)
-    # cv.waitKey(0)
-
     return ans
